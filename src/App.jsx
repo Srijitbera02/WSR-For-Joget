@@ -1,10 +1,24 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import html2canvas from "html2canvas";
 import { FaEdit } from "react-icons/fa";
+import Form from "./components/form";
 
 import './App.css'
 
 function App() {
+  
+const [showForm, setShowForm] = useState(false);
+
+  const handleEditClick = () => {
+    setShowForm(true);
+  };
+
+  const handleFormSubmit = (formData) => {
+    console.log('Form submitted:', formData);
+    setShowForm(false);
+  };
+
+  
 
   //For cCurrent Date
   const today = new Date();
@@ -75,15 +89,21 @@ function App() {
       >
         📸
       </div>
-      <FaEdit style={{marginLeft:"2vw",
+   
+          <FaEdit style={{marginLeft:"2vw",
           fontSize: "20px",
-          cursor: "pointer",}}/>
+          cursor: "pointer"}} 
+          onClick={handleEditClick}
+          />
+    
+      
 
       </div>
+      {showForm && <Form onSubmit={handleFormSubmit} />}
 
         {/* Lower Div  */}
       <div
-      style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', backgroundColor:"blue", width:"full" , height:"full" ,margin:"5px" , boxSizing: 'border-box',}}
+      style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', backgroundColor:"blue", width:"full" , height:"100%" ,margin:"5px" , boxSizing: 'border-box',backgroundColor:"black"}}
       >
         {/* Left Div  */}
         <div
