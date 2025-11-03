@@ -4,6 +4,8 @@ import { FaEdit } from "react-icons/fa";
 import Form from "./components/form";
 
 import './App.css'
+import SimpleBarChart from "./components/projectCreation";
+
 
 function App() {
   
@@ -103,7 +105,7 @@ const [showForm, setShowForm] = useState(false);
 
         {/* Lower Div  */}
       <div
-      style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', backgroundColor:"blue", width:"full" , height:"100%" ,margin:"5px" , boxSizing: 'border-box',backgroundColor:"black"}}
+      style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', backgroundColor:"blue", width:"full" , height:"100%" ,margin:"5px" , boxSizing: 'border-box',}}
       >
         {/* Left Div  */}
         <div
@@ -111,6 +113,8 @@ const [showForm, setShowForm] = useState(false);
         
         >
           This is Left
+        
+         <SimpleBarChart/>
 
         </div>
         {/* Right Div  */}
