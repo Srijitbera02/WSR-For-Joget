@@ -1,30 +1,30 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import { BarChart } from '@mui/x-charts/BarChart';
 
-const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
-const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
-const xLabels = [
-  'Page A',
-  'Page B',
-  'Page C',
-  'Page D',
-  'Page E',
-  'Page F',
-  'Page G',
-];
+import Box from '@mui/material/Box'
+import { BarChart } from '@mui/x-charts/BarChart'
+import { useProjectStore } from '../store/useProjectStore'
 
 export default function SimpleBarChart() {
+  const { projectStats } = useProjectStore()
+
+  // Extract months and counts from store
+  const xLabels = projectStats.map((p) => p.month)
+  const data = projectStats.map((p) => p.count)
+
   return (
-    <Box sx={{ width: '100%', height: 300 }}>
+    <Box sx={{ width: '90%', height: 300 }}>
+      <div style={{ marginBottom: '8px', fontWeight: 'bold', }}>
+        Last 6 months of Project data
+      </div>
       <BarChart
-        series={[
-          { data: pData, label: 'pv', id: 'pvId' },
-          { data: uData, label: 'uv', id: 'uvId' },
+        series={[{ data, label: 'No. of Projects', id: 'projectId' }]}
+        xAxis={[
+          {
+            scaleType: 'band',
+            data: xLabels,
+          },
         ]}
-        xAxis={[{ data: xLabels }]}
         yAxis={[{ width: 50 }]}
       />
     </Box>
-  );
+  )
 }
